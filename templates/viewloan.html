@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from oneyesinfotechsolutions.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 10:35:27 GMT -->
+<head>
+  <meta charset="utf-8">
+  <title>Loan management system</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Favicons -->
+  <link href="img/favicon.jpg" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="/static/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: NewBiz
+    Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/63121c1437898912e966da3b/1gbvbrcpr';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+  <!--==========================
+  Header
+  ============================-->
+  <header id="header" class="fixed-top">
+    <div class="container">
+
+      <div class="logo float-left">
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <h1 class="text-light"><a href="#header"><span>NewBiz</span></a></h1> -->
+        <a href="#intro" class="scrollto"><img src="/static/img/oneyes%20logo.png" alt="" class="img-fluid"></a>
+      </div>
+
+      <nav class="main-nav float-right d-none d-lg-block">
+        <ul>
+            <li class="active"><a href="/">Home</a></li>
+           <li class="active"><a href="{{url_for('viewloan')}}">View Application</a></li>
+           <li class="active"><a href="/">Logout</a></li>
+         </ul>
+      </nav><!-- .main-nav -->
+      
+    </div>
+  </header><!-- #header -->
+
+  <!--==========================
+    Intro Section
+  ============================-->
+<br><br><br>
+
+  <main id="main">
+
+    <!--==========================
+      About Us Section
+   
+
+    <!--==========================
+      Why Us Section
+    ============================-->
+    <section id="why-us" class="wow fadeIn">
+      <div class="container">
+        <header class="section-header">
+          <h3>Borrower Details</h3>
+          
+        </header>
+          
+            <center>
+                <div class="news_section_2 layout_padding">
+                    <div class="row">
+                        {% for row in rows %}
+                            <div class="col-sm-4" style="padding-top: 10px; color: white;">
+                                <div class="box_main_1">   
+                                    <div class="bg-secondary text-center p-4">
+                                        <p class="long_text">User : {{ row[1] }}</p>
+                                        <p class="long_text">Requried Amount: {{ row[2] }}</p>
+                                        <p class="long_text">Number of years: {{ row[3] }}</p>
+                                        <p class="long_text">purpose: {{ row[4] }}</p>
+                                      
+                                        <a class="btn btn-primary py-2 px-4" style="color: yellow;" href="{{ url_for('acceptloanrequest', id=row[0], email=row[1]) }}">ACCEPT</a>  
+<a class="btn btn-primary py-2 px-4" style="color: red;" href="{{ url_for('rejectloanrequest', id=row[0]) }}">REJECT</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </center>
+            
+        <div class="row row-eq-height justify-content-center">
+        </div>
+
+        <div class="row counters">
+      </div>
+    </section>
+
+
+
+
+
+   
+
+ 
+
+  <!-- JavaScript Libraries -->
+  <script src="/static/lib/jquery/jquery.min.js"></script>
+  <script src="/static/lib/jquery/jquery-migrate.min.js"></script>
+  <script src="/static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/lib/easing/easing.min.js"></script>
+  <script src="/static/lib/mobile-nav/mobile-nav.js"></script>
+  <script src="/static/lib/wow/wow.min.js"></script>
+  <script src="/static/lib/waypoints/waypoints.min.js"></script>
+  <script src="/static/lib/counterup/counterup.min.js"></script>
+  <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="/static/lib/isotope/isotope.pkgd.min.js"></script>
+  <script src="/static/lib/lightbox/js/lightbox.min.js"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="/static/contactform.js"></script>
+
+  <!-- Template Main Javascript File -->
+  <!-- Template Main Javascript File -->
+  <script src="/static/js/main.js"></script>
+  {% if msg == 'Accepted successfully'%}
+    <script type = "text/javascript">
+     
+      alert("Admin Given the authentication for bowworer");
+  </script>
+  {% endif %}
+  <script>
+      // JavaScript Function to Show Alert
+      </script
+
+</body>
+
+<!-- Mirrored from oneyesinfotechsolutions.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Sep 2023 10:35:46 GMT -->
+</html>

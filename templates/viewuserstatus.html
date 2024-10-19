@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Status</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Loan Status</h1>
+    <div id="loan-status" class="mt-4"></div>
+</div>
+
+<script>
+    async function fetchLoanStatus() {
+        try {
+            const response = await fetch('/loan_status', {
+                method: 'GET',
+                credentials: 'same-origin' // Ensure cookies are sent for session management
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const statusDiv = document.getElementById('loan-status');
+                statusDiv.innerHTML = `
+                    <h4>Loan Application Details:</h4>
+                    <p>Loan ID: ${data.loan_id}</p>
+                    <p>Amount: ${data.amount}</p>
+                    <p>Tenure: ${data.tenure} years</p>
+                    <p>Purpose: ${data.purpose}</p>
+                    <p>Status: ${data.status}</p>
+                `;
+            } else {
+                const errorData = await response.json();
+                document.getElementById('loan-status').innerHTML = `
+                    <p class="text-danger">${errorData.message || errorData.error}</p>
+                `;
+            }
+        } catch (error) {
+            console.error('Error fetching loan status:', error);
+            document.getElementById('loan-status').innerHTML = `
+                <p class="text-danger">An error occurred while fetching loan status.</p>
+            `;
+        }
+    }
+
+    // Fetch loan status on page load
+    window.onload = fetchLoanStatus;
+</script>
+</body>
+</html>

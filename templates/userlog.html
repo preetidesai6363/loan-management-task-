@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Loan Management System</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="img/favicon.jpg" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="/static/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="/static/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/static/lib/animate/animate.min.css" rel="stylesheet">
+  <link href="/static/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="/static/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="/static/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="/static/css/style.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!--==========================
+  Header
+============================-->
+<header id="header" class="fixed-top">
+  <div class="container">
+    <div class="logo float-left">
+      <a href="#intro" class="scrollto"><img src="/static/img/oneyes%20logo.png" alt="" class="img-fluid"></a>
+    </div>
+
+    <nav class="main-nav float-right d-none d-lg-block">
+      <ul>
+        <li class="active"><a href="/">Home</a></li>
+        <li class="active"><a href="{{ url_for('admin') }}">Admin</a></li>
+        <li class="active"><a href="{{ url_for('userlog') }}">User</a></li>
+      </ul>
+    </nav><!-- .main-nav -->
+  </div>
+</header><!-- #header -->
+
+<!--==========================
+  Intro Section
+============================-->
+<section id="intro" class="clearfix">
+  <div class="container">
+    <div class="intro-img">
+      <div class="container">
+        <div class="section-header">
+          <h3 style="color:white;width: 306px;">User Login</h3>
+        </div>
+        <div class="col-lg-8">
+          <div class="form">
+            <div id="errormessage"></div>
+            <form action="{{ url_for('userlog') }}" class="hero-form" method="post">
+              <div class="form-row">
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" data-rule="email" data-msg="Please enter a valid email" required>
+                <div class="validation"></div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Enter password" required>
+                <div class="validation"></div>
+              </div>
+              <div>
+                <center>
+                  <button class="btn btn-primary py-2 px-4" type="submit">LOGIN</button>
+                  <a class="btn btn-primary py-2 px-4" href="{{ url_for('user') }}" type="button">New Registration</a>
+                </center>
+              </div>
+            </form>
+          </div>
+        </div>
+        <br><br><br><br>
+      </div>
+    </div>
+
+    <div class="intro-info">
+      <h2>Loan<br><span>Management</span><br>System</h2>
+    </div>
+  </div>
+</section><!-- #intro -->
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="/static/lib/jquery/jquery.min.js"></script>
+<script src="/static/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main Javascript File -->
+<script src="/static/js/main.js"></script>
+
+{% if msg == 'Registred successfull' %}
+<script type="text/javascript">
+  alert("Borrower Registered successfully");
+</script>
+{% endif %}
+
+{% if msg == 'Login Failed' %}
+<script type="text/javascript">
+  alert("Login Failed! Please check your email and password.");
+</script>
+{% endif %}
+
+{% if msg == 'Login Successful' %}
+<script type="text/javascript">
+  alert("Welcome! You have logged in successfully.");
+</script>
+{% endif %}
+
+</body>
+</html>
